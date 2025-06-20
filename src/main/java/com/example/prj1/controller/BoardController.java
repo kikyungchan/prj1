@@ -36,7 +36,9 @@ public class BoardController {
     public String list(Model model) {
 
         var result = boardService.list();
+
         model.addAttribute("boardList", result);
+        
         return "board/list";
     }
 }
