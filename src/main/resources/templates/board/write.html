@@ -10,7 +10,7 @@
 <form th:action="@{/board/write}" method="post">
     <div>
         <label for="titleInput">제목</label>
-        <input type="text" id="titleInput" name="title">
+        <input type="text" id="titleInput" name="title" placeholder="제목을 입력하세요.">
     </div>
     <div>
         <label for="contentTextarea">본문</label>
@@ -18,7 +18,7 @@
     </div>
     <div>
         <label for="writerInput">작성자</label>
-        <input type="text" id="writerInput" name="writer">
+        <input type="text" id="writerInput" name="writer" placeholder="작성자를 입력하세요.">
     </div>
     <div>
         <button>저장</button>
