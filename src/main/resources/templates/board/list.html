@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        .active {
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
 <h2>게시물 목록</h2>
@@ -25,5 +34,20 @@
     </tr>
     </tbody>
 </table>
+<div>
+    <span th:if="${(leftPageNumber - 10) > 0}">
+        <a th:href="@{/board/list(page=${leftPageNumber - 10})}">이전</a>
+        |
+    </span>
+    <span th:each="pageNumber :${#numbers.sequence(leftPageNumber, rightPageNumber)}">
+        <a th:classappend="${(currentPage == pageNumber) ? 'active' : ''}" th:href="@{/board/list(page=${pageNumber})}"
+           th:text="${pageNumber}"></a>
+        |
+    </span>
+    <span th:if="${(rightPageNumber+1) <= totalPages}">
+        <a th:href="@{/board/list(page=${rightPageNumber+1})}">다음</a>
+        |
+    </span>
+</div>
 </body>
 </html>
