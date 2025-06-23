@@ -34,9 +34,24 @@
                        readonly>
             </div>
 
+            <div>
+                <!--                button.btn.btn-primary*2-->
+                <button class="btn btn-primary" form="removeForm">삭제</button>
+                <button class="btn btn-primary">수정</button>
+
+            </div>
+
         </div>
     </div>
 </div>
+<!--d-none = display: none-->
+<div class="d-none">
+    <form id="removeForm" th:action="@{/board/remove}" method="post">
+        <!--        input[name=id][value]-->
+        <input type="text" name="id" th:value="${board.id}">
+    </form>
+</div>
+
 <th:block th:replace="~{layout/main::commonScript}"/>
 </body>
 </html>
