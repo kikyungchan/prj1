@@ -31,6 +31,6 @@ public class MemberController {
         rttr.addFlashAttribute("alert",
                 Map.of("code", "success",
                         "message", "회원 가입되었습니다."));
-        return "redirect:/borad/list";
+        return "redirect:/board/list";
     }
 }
