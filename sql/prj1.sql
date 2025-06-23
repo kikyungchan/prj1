@@ -22,3 +22,18 @@ FROM board;
 SELECT COUNT(*)
 FROM board;
 
+# 회원 테이블
+CREATE TABLE member
+(
+    id         VARCHAR(15)  NOT NULL,
+    password   VARCHAR(255) NOT NULL,
+    nick_name  VARCHAR(15)  NOT NULL,
+    info       VARCHAR(500) NULL,
+    created_at datetime     NOT NULL DEFAULT NOW(),
+    CONSTRAINT pk_member PRIMARY KEY (id)
+);
+
+SELECT *
+FROM member;
+
+
