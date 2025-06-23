@@ -17,7 +17,7 @@
             <button class="navbar-toggler"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent">
-                <span class="navbar-toggle-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <!--        .collapse.navbar-collapse#navbarSupportedContent-->
@@ -44,6 +44,13 @@
                            class="nav-link"
                            th:classappend="${current == 'signup' ? 'active' : ''}">
                             회원가입
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/member/list}"
+                           class="nav-link"
+                           th:classappend="${current == 'memberList' ? 'active' : ''}">
+                            회원목록
                         </a>
                     </li>
                 </ul>
