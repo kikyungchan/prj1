@@ -69,4 +69,22 @@ public class BoardController {
                 "message", id + "번 게시물이 삭제 되었습니다."));
         return "redirect:/board/list";
     }
+
+    @GetMapping("edit")
+    public String edit(Integer id, Model model) {
+        var dto = boardService.get(id);
+        model.addAttribute("board", dto);
+        return "board/edit";
+    }
+
+    @PostMapping("edit")
+    public String editPost(BoardForm data, RedirectAttributes rttr) {
+        boardService.update(data);
+        rttr.addFlashAttribute("alert",
+                Map.of("code", "success", "message",
+                        data.getId() + "번 게시물이 수정되었습니다."));
+
+        rttr.addAttribute("id", data.getId());
+        return "redirect:/board/list";
+    }
 }
