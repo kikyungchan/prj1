@@ -2,6 +2,7 @@ package com.example.prj1.board.controller;
 
 import com.example.prj1.board.dto.BoardForm;
 import com.example.prj1.board.service.BoardService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +22,17 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("write")
-    public String writeForm() {
-
-        return "board/write";
+    public String writeForm(HttpSession session, RedirectAttributes rttr) {
+        Object user = session.getAttribute("loggedInUser");
+        if (user != null) {
+            // 로그인 하고 글을 작성하려고하는 경우
+            return "board/write";
+        } else {
+            //로그인 안했을때
+            rttr.addFlashAttribute("alert", Map.of("code", "warning",
+                    "message", "로그인 후 글을 작성 해주세요."));
+            return "redirect:/member/login";
+        }
     }
 
     @PostMapping("write")
