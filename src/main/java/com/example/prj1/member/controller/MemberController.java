@@ -78,13 +78,15 @@ public class MemberController {
     @PostMapping("remove")
     public String remove(MemberForm data, RedirectAttributes rttr,
                          @SessionAttribute(value = "loggedInUser", required = false)
-                         MemberDto user) {
+                         MemberDto user, HttpSession session) {
 
         boolean result = memberService.remove(data, user);
 
         if (result) {
             rttr.addFlashAttribute("alert",
                     Map.of("code", "danger", "message", data.getId() + "님 탈퇴 되었습니다."));
+
+            session.invalidate();
             return "redirect:/board/list";
         } else {
             rttr.addFlashAttribute("alert",
