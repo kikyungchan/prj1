@@ -75,6 +75,7 @@
                         <a th:href="@{/member/view(id=${session.loggedInUser.id})}"
                            class="nav-link"
                            th:classappend="${current == 'memberView' ? 'active' : ''}">
+                            <i class="fa-regular fa-circle-user"></i>
                             <span th:text="${session.loggedInUser.nickName}">별명</span>
                         </a>
                     </li>
@@ -87,7 +88,7 @@
                            th:value="${(param.keyword == null || param.keyword[0].isBlank()) ? '' : param.keyword[0]}">
                     <button class="btn btn-outline-success">
                         <span style="word-break: keep-all">
-                            검색
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </span>
                     </button>
                 </form>
