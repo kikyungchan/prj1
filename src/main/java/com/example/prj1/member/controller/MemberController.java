@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.swing.*;
 import java.util.Map;
 
 @Controller
@@ -60,7 +59,7 @@ public class MemberController {
     }
 
     @GetMapping("view")
-    public String view(Model model, String id, @SessionAttribute(value = "loggedInuser", required = false)
+    public String view(Model model, String id, @SessionAttribute(value = "loggedInUser", required = false)
     MemberDto user, RedirectAttributes rttr) {
         MemberDto member = memberService.get(id);
 
@@ -72,7 +71,7 @@ public class MemberController {
             }
         }
         rttr.addFlashAttribute("alert", Map.of("code", "warning", "message", "권한이 없습니다"));
-        return "ridirect:/board/list";
+        return "redirect:/board/list";
 
     }
 
