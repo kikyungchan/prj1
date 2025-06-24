@@ -34,7 +34,7 @@
                        readonly>
             </div>
 
-            <div>
+            <div th:if="${session.loggedInUser != null && (session.loggedInUser.id == board.writer.id)}">
                 <!--                button.btn.btn-primary*2-->
                 <a th:href="@{/board/edit(id=${board.id})}"
                    class="btn btn-outline-primary">수정
@@ -43,9 +43,7 @@
                         data-bs-toggle="modal"
                         data-bs-target="#removeModal">삭제
                 </button>
-
             </div>
-
         </div>
     </div>
 </div>
