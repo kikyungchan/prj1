@@ -25,7 +25,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="textareaInfo" class="form-label">자기소계</label>
-                    <textarea th:text="${member.info}" name=" info" id="textareaInfo" rows="3"
+                    <textarea th:text="${member.info}" name="info" id="textareaInfo" rows="3"
                               class="form-control"></textarea>
                 </div>
                 <div class="mb-3">
@@ -33,10 +33,10 @@
                             data-bs-target="#editModal"
                             data-bs-toggle="modal">저장
                     </button>
-                    <button class="btn btn-outline-primary"
+                    <button class="btn btn-outline-secondary"
                             type="button"
                             data-bs-toggle="modal"
-                            data-bs-target="#editPasswordModal">뭐지
+                            data-bs-target="#editPasswordModal">암호변경
                     </button>
                 </div>
             </form>
@@ -91,7 +91,7 @@
                         <!--                        label.form-label+input.form-control-->
                         <label for="inputPassword1" class="form-label">기존 암호</label>
                         <input placeholder="기존 암호를 입력하세요"
-                               name="oldpassword"
+                               name="oldPassword"
                                id="inputPassword1"
                                type="password"
                                class="form-control">
@@ -100,7 +100,7 @@
                         <!--                        label.form-label+input.form-control-->
                         <label for="inputPassword2" class="form-label">새 암호</label>
                         <input placeholder="새 암호를 입력하세요"
-                               name="newpassword"
+                               name="newPassword"
                                id="inputPassword2"
                                type="password"
                                class="form-control">

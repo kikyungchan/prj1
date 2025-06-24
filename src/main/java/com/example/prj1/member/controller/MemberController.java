@@ -108,6 +108,9 @@ public class MemberController {
                            String oldPassword,
                            String newPassword,
                            RedirectAttributes rttr) {
+        System.out.println("id: " + id);
+        System.out.println("oldPassword: " + oldPassword);
+        System.out.println("newPassword: " + newPassword);
         boolean result = memberService.updatePassword(id, oldPassword, newPassword);
         if (result) {
             rttr.addFlashAttribute("alert",
