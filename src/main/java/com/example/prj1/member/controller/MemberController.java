@@ -110,9 +110,12 @@ public class MemberController {
     }
 
     @PostMapping("edit")
-    public String edit(MemberForm data, RedirectAttributes rttr, @SessionAttribute(value = "loggedInUser", required = false) MemberDto user) {
+    public String edit(MemberForm data, RedirectAttributes rttr,
+                       @SessionAttribute(value = "loggedInUser", required = false)
+                       MemberDto user,
+                       HttpSession session) {
 
-        boolean result = memberService.update(data, user);
+        boolean result = memberService.update(data, user, session);
         if (result) {
             rttr.addFlashAttribute("alert",
                     Map.of("code", "success", "message", "회원 정보가 변경되었습니다."));
