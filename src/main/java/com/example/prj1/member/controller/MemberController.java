@@ -2,6 +2,7 @@ package com.example.prj1.member.controller;
 
 import com.example.prj1.member.dto.MemberForm;
 import com.example.prj1.member.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.swing.*;
 import java.util.Map;
 
 @Controller
@@ -108,7 +110,6 @@ public class MemberController {
                            String oldPassword,
                            String newPassword,
                            RedirectAttributes rttr) {
-        System.out.println("id: " + id);
         System.out.println("oldPassword: " + oldPassword);
         System.out.println("newPassword: " + newPassword);
         boolean result = memberService.updatePassword(id, oldPassword, newPassword);
@@ -125,5 +126,22 @@ public class MemberController {
         return "redirect:/member/edit";
     }
 
+    @GetMapping("login")
+    public String loginForm() {
+
+        return "member/login";
+    }
+
+    @PostMapping("login")
+    public String loginProcess(String id, String password, HttpSession session) {
+        boolean result = memberService.login(id, password, session);
+        if (result) {
+            // 로그인 성공
+            return "redirect:/board/list";
+        } else {
+            //로그인 실패
+            return "redirect:/member/login";
+        }
+    }
 }
 
