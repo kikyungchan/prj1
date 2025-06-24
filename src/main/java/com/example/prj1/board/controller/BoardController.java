@@ -52,9 +52,11 @@ public class BoardController {
     }
 
     @GetMapping("list")
-    public String list(@RequestParam(defaultValue = "1") Integer page, Model model) {
+    public String list(@RequestParam(defaultValue = "1") Integer page,
+                       @RequestParam(defaultValue = "") String keyword,
+                       Model model) {
 
-        var result = boardService.list(page);
+        var result = boardService.list(page, keyword);
 
 //        model.addAttribute("boardList", result);
         model.addAllAttributes(result);
